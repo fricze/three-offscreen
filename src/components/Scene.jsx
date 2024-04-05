@@ -11,7 +11,7 @@ import {
 function Model() {
   const mesh = useRef();
   // const { nodes, materials } = useGLTF("/pmndrs.glb");
-  const { nodes, materials } = useGLTF("/hello.gltf");
+  const { nodes, materials } = useGLTF("/hellowdi.gltf");
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
   const color = hovered ? "hotpink" : "orange";
@@ -27,7 +27,7 @@ function Model() {
           geometry={nodes.Text.geometry}
           material={materials[""]}
           material-color={color}
-          scale={active ? 0.004 : 0.003}
+          scale={active ? 0.008 : 0.007}
           onClick={(e) => (e.stopPropagation(), setActive(!active))}
           onPointerOver={(e) => (e.stopPropagation(), setHover(true))}
           onPointerOut={(e) => setHover(false)}
