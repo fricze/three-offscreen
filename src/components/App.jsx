@@ -159,6 +159,8 @@ export default function App() {
 
       <a
         href="https://github.com/pmndrs/react-three-offscreen"
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
           position: "absolute",
           bottom: "1lh",
