@@ -7,16 +7,23 @@ import {
   Environment,
   CameraControls,
 } from "@react-three/drei";
+import {
+  Bloom,
+  DepthOfField,
+  EffectComposer,
+  Noise,
+  Vignette,
+} from "@react-three/postprocessing";
 
 function Model() {
   const mesh = useRef();
-  // const { nodes, materials } = useGLTF("/pmndrs.glb");
-  const { nodes, materials } = useGLTF("/hellowdi.gltf");
+  const { nodes, materials } = useGLTF("/hello_4dev.gltf");
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
   const color = hovered ? "hotpink" : "orange";
-  useFrame((state, delta) => {
-    mesh.current.rotation.x += delta / 2;
+
+  useFrame((_state, delta) => {
+    mesh.current.rotation.x += delta / 20;
     mesh.current.rotation.y += delta / 2;
   });
 
@@ -46,6 +53,18 @@ function Model() {
 export default function App() {
   return (
     <>
+      <EffectComposer>
+        <DepthOfField
+          focusDistance={0}
+          focalLength={0.02}
+          bokehScale={2}
+          height={480}
+        />
+        <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+        <Noise opacity={0.02} />
+        <Vignette eskil={false} offset={0.1} darkness={1.1} />
+      </EffectComposer>
+
       <ambientLight />
       <pointLight position={[10, 10, 5]} />
       <Model />
