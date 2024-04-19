@@ -17,7 +17,7 @@ import {
 
 function Model() {
   const mesh = useRef();
-  const { nodes, materials } = useGLTF("/hello_4dev.gltf");
+  const { nodes, materials } = useGLTF("/hellolublin.gltf");
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
   const color = hovered ? "hotpink" : "orange";
